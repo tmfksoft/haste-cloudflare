@@ -1,6 +1,5 @@
 
-export default `
-# Haste
+export default `# Haste
 
 Sharing code is a good thing, and it should be _really_ easy to do.
 A lot of times, I want to show you something I'm seeing - and that's where we
@@ -49,14 +48,16 @@ Post things at your own risk. Not responsible for any removed pastes.
 ## Open Source
 
 Haste can easily be installed behind your network, and it's all open source!
+This version you're using is running entirely in CloudFlare!
 
+* [haste-cloudflare](https://github.com/tmfksoft/haste-cloudflare)
 * [haste-client](https://github.com/seejohnrun/haste-client)
 * [haste-server](https://github.com/zneix/haste-server)
 
 ## Authors
 
+Ported to CloudFlare by Thomas Burnett-Taylor
 Project continued by zneix <zzneix@gmail.com>
 
 Original Code by John Crepezzi <john.crepezzi@gmail.com>
-Key Design by Brian Dawson <bridawson@gmail.com>
-`;
+Key Design by Brian Dawson <bridawson@gmail.com>`;
