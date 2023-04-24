@@ -1,0 +1,11 @@
+name = "hastecloudflare"
+main = "src/index.ts"
+compatibility_date = "2023-04-24"
+
+kv_namespaces = [
+  { binding = "haste", id = "3edabf9bf8af46ae8188e942ef78cbc8", preview_id = "569b2769036f40c381c5a7a8ae07b32f" }
+]
+
+[site]
+bucket = "./static"
+
