@@ -1,4 +1,5 @@
 import { getAssetFromKV, mapRequestToAsset } from '@cloudflare/kv-asset-handler';
+import aboutDocument from './about';
 
 export interface Env {
 	// Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
@@ -41,7 +42,7 @@ addEventListener('fetch', (event) => {
 });
 
 function fetchId(fullName: string) {
-	const ex = fullName.split(".");
+	const ex = fullName.toLowerCase().split(".");
 	if (ex.length <= 0) {
 		return "";
 	}
@@ -80,7 +81,8 @@ async function getHasteEvent(event: FetchEvent, hasteId: string): Promise<Respon
 		return new Response(JSON.stringify({ message: "Document not found." }), {
 			headers: {
 				"Content-Type": "application/json"
-			}
+			},
+			status: 404,
 		});
 	}
 
@@ -99,7 +101,8 @@ async function getRawHasteEvent(event: FetchEvent, hasteId: string): Promise<Res
 		return new Response(JSON.stringify({ message: "Document not found." }), {
 			headers: {
 				"Content-Type": "application/json"
-			}
+			},
+			status: 404,
 		});
 	}
 
@@ -116,6 +119,12 @@ async function createHaste(hasteContents: string): Promise<string> {
 	return hasteId;
 }
 async function getHaste(hasteId: string): Promise<HasteDocument | null> {
+	if (hasteId === "about") {
+		return {
+			key: "about",
+			data: aboutDocument,
+		};
+	}
 	const hasteContents = await haste.get(hasteId);
 	if (!hasteContents) {
 		return null;
